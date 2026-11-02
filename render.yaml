@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: shopsphere-backend
+    runtime: docker
+    plan: free
+    dockerfilePath: ./ShopSphere-backend/Dockerfile.vercel
+    dockerContext: ./ShopSphere-backend
+    healthCheckPath: /v3/api-docs
+    envVars:
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        sync: false
+      - key: DB_NAME
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ALLOWED_ORIGINS
+        value: https://shop-sphere-beta-cyan.vercel.app
+      - key: DDL_AUTO
+        value: update

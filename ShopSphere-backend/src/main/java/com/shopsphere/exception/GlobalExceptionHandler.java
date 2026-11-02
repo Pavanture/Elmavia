@@ -45,6 +45,17 @@ public class GlobalExceptionHandler {
         return buildResponse(HttpStatus.BAD_REQUEST, ex.getMessage(), request, null);
     }
 
+    @ExceptionHandler(QikinkConfigurationException.class)
+    public ResponseEntity<ErrorResponse> handleQikinkConfiguration(QikinkConfigurationException ex,
+                                                                     HttpServletRequest request) {
+        return buildResponse(HttpStatus.SERVICE_UNAVAILABLE, ex.getMessage(), request, null);
+    }
+
+    @ExceptionHandler(QikinkApiException.class)
+    public ResponseEntity<ErrorResponse> handleQikinkApi(QikinkApiException ex, HttpServletRequest request) {
+        return buildResponse(HttpStatus.BAD_GATEWAY, ex.getMessage(), request, null);
+    }
+
     @ExceptionHandler({UnauthorizedException.class, AccessDeniedException.class})
     public ResponseEntity<ErrorResponse> handleUnauthorized(RuntimeException ex, HttpServletRequest request) {
         return buildResponse(HttpStatus.FORBIDDEN, "You are not authorized to perform this action", request, null);

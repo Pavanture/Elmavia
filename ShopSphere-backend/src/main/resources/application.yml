@@ -34,6 +34,13 @@ app:
   cors:
     allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000}
 
+qikink:
+  base-url: ${QIKINK_BASE_URL:https://api.qikink.com}
+  token-path: ${QIKINK_TOKEN_PATH:/api/token}
+  order-list-path: ${QIKINK_ORDER_LIST_PATH:/api/order/list}
+  client-id: ${QIKINK_CLIENT_ID:}
+  client-secret: ${QIKINK_CLIENT_SECRET:}
+
 springdoc:
   api-docs:
     path: /v3/api-docs
